@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Dialogs"
+run/main_scene="uid://b2ci4vkqx758g"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Dialogs"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogs/plugin.cfg")
