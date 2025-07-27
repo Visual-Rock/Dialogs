@@ -1,0 +1,51 @@
+@tool
+class_name DialogsContext extends Resource
+
+const PATH = "res://dialog"
+const DATA_FILE_NAME = "data.json"
+
+var dialogs: Array[Dialog] = []
+
+func save_data() -> void:
+	if !DirAccess.dir_exists_absolute(PATH):
+		DirAccess.make_dir_recursive_absolute(PATH)
+	
+	var f := FileAccess.open(get_data_file_name(), FileAccess.WRITE)
+	
+	if f == null:
+		print(FileAccess.get_open_error())
+		return
+	
+	var data := { "dialogs": [] }
+	
+	for dialog in dialogs:
+		data["dialogs"].append({ "id": dialog.id, "name": dialog.name, "description": dialog.description })
+	
+	f.store_line(JSON.stringify(data))
+	f.close()
+
+func load_data() -> void:
+	if !FileAccess.file_exists(get_data_file_name()):
+		return
+	
+	var f := FileAccess.open(get_data_file_name(), FileAccess.READ)
+	var file_content := f.get_as_text()
+	
+	var json := JSON.new()
+	var error := json.parse(file_content)
+	
+	if error:
+		print("JSON Parse Error: ", json.get_error_message(), " in ", file_content, " at line ", json.get_error_line())
+		return
+	
+	var data : Dictionary = json.data
+	
+	if data.has("dialogs"):
+		dialogs.clear()
+		for dialog in data["dialogs"]:
+			var d = Dialog.new(dialog["id"], dialog["name"])
+			d.description = dialog["description"]
+			dialogs.append(d)
+
+func get_data_file_name() -> String:
+	return PATH + "/" + DATA_FILE_NAME

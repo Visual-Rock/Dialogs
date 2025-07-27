@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2ci4vkqx758g"]
+[gd_scene load_steps=5 format=3 uid="uid://b2ci4vkqx758g"]
 
+[ext_resource type="Script" uid="uid://c30lmf4tjtb7a" path="res://addons/dialogs/scripts/dialog_overview.gd" id="1_cosdr"]
 [ext_resource type="PackedScene" uid="uid://dknu53g6q7x8t" path="res://addons/dialogs/ui/overview/tool_bar.tscn" id="1_habyg"]
 [ext_resource type="PackedScene" uid="uid://bwihmfaw8ay70" path="res://addons/dialogs/ui/overview/dialog_list.tscn" id="2_cosdr"]
 [ext_resource type="PackedScene" uid="uid://c1pwudkkipkyk" path="res://addons/dialogs/ui/overview/status_bar.tscn" id="3_sat1t"]
@@ -13,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_cosdr")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -23,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
 
-[node name="Dialogs" type="MarginContainer" parent="TabContainer"]
+[node name="Overview" type="MarginContainer" parent="TabContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -31,16 +33,15 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 metadata/_tab_index = 0
 
-[node name="MainContainer" type="VBoxContainer" parent="TabContainer/Dialogs"]
+[node name="MainContainer" type="VBoxContainer" parent="TabContainer/Overview"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="ToolBar" parent="TabContainer/Dialogs/MainContainer" instance=ExtResource("1_habyg")]
+[node name="ToolBar" parent="TabContainer/Overview/MainContainer" instance=ExtResource("1_habyg")]
 layout_mode = 2
 
-[node name="DialogList" parent="TabContainer/Dialogs/MainContainer" instance=ExtResource("2_cosdr")]
+[node name="DialogList" parent="TabContainer/Overview/MainContainer" instance=ExtResource("2_cosdr")]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="StatusBar" parent="TabContainer/Dialogs/MainContainer" instance=ExtResource("3_sat1t")]
+[node name="StatusBar" parent="TabContainer/Overview/MainContainer" instance=ExtResource("3_sat1t")]
 layout_mode = 2

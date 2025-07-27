@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwcso0b3s0mrf"]
+
+[ext_resource type="Script" uid="uid://rawamdwll2kf" path="res://addons/dialogs/scripts/dialog_description_edit.gd" id="1_bpl8w"]
+
+[node name="DialogDescriptionEdit" type="LineEdit"]
+offset_right = 68.5625
+offset_bottom = 31.0
+script = ExtResource("1_bpl8w")
+
+[connection signal="text_changed" from="." to="." method="_on_text_changed"]

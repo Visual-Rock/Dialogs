@@ -12,7 +12,7 @@ unicode = 110
 [sub_resource type="Shortcut" id="Shortcut_ouypu"]
 events = [SubResource("InputEventKey_qg0jt")]
 
-[sub_resource type="SVGTexture" id="SVGTexture_qg0jt"]
+[sub_resource type="SVGTexture" id="SVGTexture_ouypu"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m7 1v6h-6v2h6v6h2v-6h6v-2h-6v-6z\"/></svg>
 "
 color_map = {
@@ -33,7 +33,12 @@ script = ExtResource("1_qg0jt")
 [node name="Add" type="TextureButton" parent="."]
 layout_mode = 2
 shortcut = SubResource("Shortcut_ouypu")
-texture_normal = SubResource("SVGTexture_qg0jt")
+texture_normal = SubResource("SVGTexture_ouypu")
+
+[node name="Save" type="TextureButton" parent="."]
+layout_mode = 2
+shortcut = SubResource("Shortcut_ouypu")
+texture_normal = SubResource("SVGTexture_ouypu")
 
 [node name="Dialogs" type="Node" parent="."]
 
