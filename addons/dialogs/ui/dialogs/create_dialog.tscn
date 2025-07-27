@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://by3vfn6kgpyoe"]
+
+[ext_resource type="Script" uid="uid://vmh1805m2q6q" path="res://addons/dialogs/scripts/create_dialog.gd" id="1_at8hu"]
+
+[node name="CreateDialog" type="ConfirmationDialog"]
+oversampling_override = 1.0
+size = Vector2i(204, 100)
+ok_button_text = "Create Dialog"
+script = ExtResource("1_at8hu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 196.0
+offset_bottom = 51.0
+
+[node name="DialogName" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Dialog Name"
+
+[connection signal="canceled" from="." to="." method="_on_canceled"]
+[connection signal="confirmed" from="." to="." method="_on_confirmed"]

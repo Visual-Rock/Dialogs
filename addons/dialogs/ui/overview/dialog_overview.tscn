@@ -33,12 +33,14 @@ metadata/_tab_index = 0
 
 [node name="MainContainer" type="VBoxContainer" parent="TabContainer/Dialogs"]
 layout_mode = 2
+theme_override_constants/separation = 4
 
 [node name="ToolBar" parent="TabContainer/Dialogs/MainContainer" instance=ExtResource("1_habyg")]
 layout_mode = 2
 
 [node name="DialogList" parent="TabContainer/Dialogs/MainContainer" instance=ExtResource("2_cosdr")]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="StatusBar" parent="TabContainer/Dialogs/MainContainer" instance=ExtResource("3_sat1t")]
 layout_mode = 2
