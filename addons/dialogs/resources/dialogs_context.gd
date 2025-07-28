@@ -4,6 +4,8 @@ class_name DialogsContext extends Resource
 const PATH = "res://dialog"
 const DATA_FILE_NAME = "data.json"
 
+const EDITOR := preload("res://addons/dialogs/ui/editor/dialog_editor.tscn")
+
 var dialogs: Array[Dialog] = []
 
 func save_data() -> void:
@@ -49,3 +51,21 @@ func load_data() -> void:
 
 func get_data_file_name() -> String:
 	return PATH + "/" + DATA_FILE_NAME
+
+func get_dialog_editor(dialog: Dialog) -> Control:
+	if FileAccess.file_exists(get_dialog_editor_path(dialog)):
+		return load(get_dialog_editor_path(dialog)).instantiate()
+	return EDITOR.instantiate()
+
+func save_dialog_editor(dialog: Dialog, editor: GraphEdit) -> void:
+	var data := PackedScene.new()
+	
+	for child in editor.get_children():
+		if child is GraphNode:
+			child.save_and_set_owner(editor)
+	
+	data.pack(editor)
+	ResourceSaver.save(data, get_dialog_editor_path(dialog))
+
+func get_dialog_editor_path(dialog: Dialog) -> String:
+	return PATH + "/" + str(dialog.id) + "_" + dialog.name + ".tscn"

@@ -45,3 +45,19 @@ layout_mode = 2
 
 [node name="StatusBar" parent="TabContainer/Overview/MainContainer" instance=ExtResource("3_sat1t")]
 layout_mode = 2
+
+[node name="Dialogs" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+metadata/_tab_index = 1
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer/Dialogs"]
+layout_mode = 2
+drag_to_rearrange_enabled = true
+
+[connection signal="text_changed" from="TabContainer/Overview/MainContainer/DialogList/0_2" to="TabContainer/Overview/MainContainer/DialogList/0_2" method="_on_text_changed"]
+[connection signal="text_changed" from="TabContainer/Overview/MainContainer/DialogList/1_2" to="TabContainer/Overview/MainContainer/DialogList/1_2" method="_on_text_changed"]

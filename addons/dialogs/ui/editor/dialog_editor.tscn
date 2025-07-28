@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0xr8y235p70j"]
+
+[ext_resource type="Script" uid="uid://c85vryum61fpw" path="res://addons/dialogs/scripts/dialog_editor.gd" id="1_33rds"]
+
+[node name="DialogEditor" type="GraphEdit"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_33rds")
+metadata/_tab_index = 0
