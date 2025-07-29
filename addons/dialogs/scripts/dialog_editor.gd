@@ -4,17 +4,25 @@ extends GraphEdit
 var save_texture := EditorInterface.get_editor_theme().get_icon("Save", "EditorIcons")
 var add_texture := EditorInterface.get_editor_theme().get_icon("ToolAddNode", "EditorIcons")
 var close_texture := EditorInterface.get_editor_theme().get_icon("GuiClose", "EditorIcons")
+var bake_texture := EditorInterface.get_editor_theme().get_icon("Bake", "EditorIcons")
 
 var node_menu: MenuButton
+var start_node: GraphNode
 
 var dialog: Dialog
 var context: DialogsContext
 
 var node_menu_items := [
 	{
+		"name": "Start Node",
+		"key": KEY_S,
+		"id": 0,
+		"data": preload("res://addons/dialogs/ui/editor/nodes/start_node.tscn")
+	},
+	{
 		"name": "Text Node",
 		"key": KEY_T,
-		"id": 0,
+		"id": 1,
 		"data": preload("res://addons/dialogs/ui/editor/nodes/text_node.tscn")
 	}
 ]
@@ -28,6 +36,14 @@ func _ready() -> void:
 	save_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
 	save_button.connect("pressed", on_save_clicked)
 	toolbar.add_child(save_button)
+	
+	# bake button
+	var bake_button = TextureButton.new()
+	bake_button.texture_normal = bake_texture
+	bake_button.tooltip_text = "bakes the dialog"
+	bake_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
+	bake_button.connect("pressed", on_bake_clicked)
+	toolbar.add_child(bake_button)
 	
 	# node menu
 	node_menu = MenuButton.new()
@@ -50,6 +66,19 @@ func _ready() -> void:
 	close_button.tooltip_text = "saves and closes the dialog"
 	close_button.connect("pressed", on_close_clicked)
 	toolbar.add_child(close_button)
+	
+	self.connect("connection_request", connection_request)
+	self.connect("disconnection_request", disconnection_request)
+	
+	for node in self.get_children():
+		if node is GraphNode && node.node_type == 0:
+			start_node = node
+
+func connection_request(from, from_slot, to, to_slot):
+	connect_node(from, from_slot, to, to_slot)
+
+func disconnection_request(from, from_slot, to, to_slot):
+	disconnect_node(from, from_slot, to, to_slot)
 
 func init(dialog: Dialog, context: DialogsContext) -> void:
 	self.dialog = dialog
@@ -62,8 +91,19 @@ func init(dialog: Dialog, context: DialogsContext) -> void:
 func on_save_clicked() -> void:
 	context.save_dialog_editor(dialog, self)
 
+func on_bake_clicked() -> void:
+	if start_node == null:
+		printerr("missing start node")
+		return
+	print("bake")
+
 func on_add_node(id: int) -> void:
-	var node = node_menu.get_popup().get_item_metadata(id)["data"].instantiate()
+	var meta = node_menu.get_popup().get_item_metadata(id)
+	# TODO: disable menu entry + message
+	if start_node != null && meta["id"] == 0:
+		return
+	
+	var node = meta["data"].instantiate()
 	self.add_child(node)
 	node.init(dialog.template)
 

@@ -2,6 +2,7 @@
 extends GraphNode
 
 @export var title_string: String = "Base Node"
+@export var node_type: int = -1
 @export var data: Dictionary = {}
 
 @onready var values: VBoxContainer = $Values
@@ -20,8 +21,6 @@ func _ready() -> void:
 	get_titlebar_hbox().add_child(close_button)
 	
 	title = title_string
-	
-	print("ready")
 
 func init(t: Template) -> void:
 	self.template = t
@@ -51,13 +50,14 @@ func save_node() -> void:
 		for v in template.values:
 			if v.name == child.name:
 				template_value = v
-		print("saving value " + child.name)
+		
 		match template_value.type:
-			0: # TODO: use enm value
+			0: # TODO: use enum value
 				data[child.name] = child.get_selected_metadata()
 
 func add_values() -> void:
-	#for child in values.get_children():
+	if values.get_child_count() > 0:
+		return
 	
 	for value in template.values:
 		var val
@@ -65,7 +65,7 @@ func add_values() -> void:
 			val = data[value.name]
 		
 		match value.type:
-			0: # TODO: use enm value
+			0: # TODO: use enum value
 				var btn = OptionButton.new()
 				var default = -1
 				var selected = -1

@@ -7,4 +7,5 @@ title = "Text Node"
 slot/0/left_enabled = true
 slot/0/right_enabled = true
 title_string = "Text Node"
+node_type = 1
 data = {}
