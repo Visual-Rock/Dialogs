@@ -7,6 +7,7 @@ const DATA_FILE_NAME = "data.json"
 const EDITOR := preload("res://addons/dialogs/ui/editor/dialog_editor.tscn")
 
 var dialogs: Array[Dialog] = []
+var templates: Array[Template] = []
 
 func save_data() -> void:
 	if !DirAccess.dir_exists_absolute(PATH):
@@ -21,12 +22,14 @@ func save_data() -> void:
 	var data := { "dialogs": [] }
 	
 	for dialog in dialogs:
-		data["dialogs"].append({ "id": dialog.id, "name": dialog.name, "description": dialog.description })
+		data["dialogs"].append({ "id": dialog.id, "name": dialog.name, "description": dialog.description, "template": dialog.template.name })
 	
 	f.store_line(JSON.stringify(data))
 	f.close()
 
 func load_data() -> void:
+	load_templates()
+	
 	if !FileAccess.file_exists(get_data_file_name()):
 		return
 	
@@ -47,7 +50,15 @@ func load_data() -> void:
 		for dialog in data["dialogs"]:
 			var d = Dialog.new(dialog["id"], dialog["name"])
 			d.description = dialog["description"]
+			d.template = get_template(dialog["template"])
 			dialogs.append(d)
+
+func get_template(name: String) -> Template:
+	for template in templates:
+		if template.name == name:
+			return template
+	printerr("failed to find template: " + name)
+	return null
 
 func get_data_file_name() -> String:
 	return PATH + "/" + DATA_FILE_NAME
@@ -69,3 +80,13 @@ func save_dialog_editor(dialog: Dialog, editor: GraphEdit) -> void:
 
 func get_dialog_editor_path(dialog: Dialog) -> String:
 	return PATH + "/" + str(dialog.id) + "_" + dialog.name + ".tscn"
+
+func load_templates() -> void:
+	if !DirAccess.dir_exists_absolute(get_templates_path()):
+		printerr("no templates found! path: " + get_templates_path())
+	
+	for template in DirAccess.get_files_at(get_templates_path()):
+		templates.append(Template.new(get_templates_path() + template))
+
+func get_templates_path() -> String:
+	return PATH + "/templates/" 

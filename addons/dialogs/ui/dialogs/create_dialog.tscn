@@ -4,7 +4,7 @@
 
 [node name="CreateDialog" type="ConfirmationDialog"]
 oversampling_override = 1.0
-size = Vector2i(204, 123)
+size = Vector2i(204, 147)
 ok_button_text = "Create Dialog"
 script = ExtResource("1_at8hu")
 
@@ -12,7 +12,7 @@ script = ExtResource("1_at8hu")
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 196.0
-offset_bottom = 74.0
+offset_bottom = 98.0
 
 [node name="DialogId" type="SpinBox" parent="VBoxContainer"]
 layout_mode = 2
@@ -22,6 +22,9 @@ prefix = "ID:"
 [node name="DialogName" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
 placeholder_text = "Dialog Name"
+
+[node name="Template" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
 
 [connection signal="canceled" from="." to="." method="_on_canceled"]
 [connection signal="confirmed" from="." to="." method="_on_confirmed"]

@@ -17,12 +17,16 @@ var save_texture: Texture2D = EditorInterface.get_editor_theme().get_icon("Save"
 # Signals
 signal dialog_added(dialog: Dialog)
 
-func _ready() -> void:
+func init(context: DialogsContext) -> void:
+	self.context = context
+	
 	add_button.texture_normal = add_texture
 	add_button.connect("pressed", on_add_pressed)
 	
 	save_button.texture_normal = save_texture
 	save_button.connect("pressed", on_save_pressed)
+	
+	create_dialog.context = context
 
 func on_add_pressed() -> void:
 	create_dialog.open_dialog()
@@ -32,6 +36,7 @@ func on_add_pressed() -> void:
 		return
 	
 	var dialog = Dialog.new(result.dialog_id, result.dialog_name)
+	dialog.template = result.dialog_template
 	context.dialogs.append(dialog)
 	emit_signal("dialog_added", dialog)
 

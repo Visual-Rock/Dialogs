@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0orbcyh11g65"]
+
+[ext_resource type="PackedScene" uid="uid://cg5xaonteryu3" path="res://addons/dialogs/ui/editor/nodes/base_node.tscn" id="1_dqvak"]
+
+[node name="TextNode" instance=ExtResource("1_dqvak")]
+title = "Text Node"
+slot/0/left_enabled = true
+slot/0/right_enabled = true
+title_string = "Text Node"
+data = {}

@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://iv3d3yycdkmr" path="res://addons/dialogs/scripts/nodes/base_node.gd" id="1_p6u0l"]
 
 [node name="BaseNode" type="GraphNode"]
-offset_right = 9.0
-offset_bottom = 55.0
+offset_right = 208.0
+offset_bottom = 133.0
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
 script = ExtResource("1_p6u0l")
+title_string = null
+data = null
+
+[node name="Values" type="VBoxContainer" parent="."]
+layout_mode = 2

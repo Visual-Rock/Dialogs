@@ -13,7 +13,7 @@ func _ready() -> void:
 	context.load_data()
 	
 	# setup toolbar
-	toolbar.context = context
+	toolbar.init(context)
 	toolbar.connect("dialog_added", on_dialog_added)
 	
 	# setup dialog list
