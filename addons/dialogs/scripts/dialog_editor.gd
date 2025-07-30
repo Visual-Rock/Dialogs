@@ -24,6 +24,18 @@ var node_menu_items := [
 		"key": KEY_T,
 		"id": 1,
 		"data": preload("res://addons/dialogs/ui/editor/nodes/text_node.tscn")
+	},
+	{
+		"name": "Branch Node",
+		"key": KEY_B,
+		"id": 2,
+		"data": preload("res://addons/dialogs/ui/editor/nodes/branch_node.tscn")
+	},
+	{
+		"name": "End Node",
+		"key": KEY_E,
+		"id": 3,
+		"data": preload("res://addons/dialogs/ui/editor/nodes/end_node.tscn")
 	}
 ]
 

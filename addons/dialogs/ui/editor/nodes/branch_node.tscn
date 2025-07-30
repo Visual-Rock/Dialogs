@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci20j60whtv3f"]
+
+[ext_resource type="PackedScene" uid="uid://cg5xaonteryu3" path="res://addons/dialogs/ui/editor/nodes/base_node.tscn" id="1_lirgj"]
+[ext_resource type="Script" uid="uid://dlldtw528fihk" path="res://addons/dialogs/scripts/nodes/branch_node.gd" id="2_xtxq1"]
+
+[node name="BranchNode" instance=ExtResource("1_lirgj")]
+title = "Branch Node"
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = true
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("2_xtxq1")
+branches = []
+type = 0
+value = ""
+title_string = "Branch Node"
+node_type = 2
+
+[node name="HSeparator" type="HSeparator" parent="." index="2"]
+layout_mode = 2
+
+[node name="Header" type="VBoxContainer" parent="." index="3"]
+layout_mode = 2
+
+[node name="BranchType" type="OptionButton" parent="Header" index="0"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Selection"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+popup/item_2/text = "On Value"
+popup/item_2/id = 2
+
+[node name="Branches" type="SpinBox" parent="Header" index="1"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+prefix = "Branches:"
+
+[node name="ValueName" type="LineEdit" parent="Header" index="2"]
+visible = false
+layout_mode = 2
+placeholder_text = "Value Name"

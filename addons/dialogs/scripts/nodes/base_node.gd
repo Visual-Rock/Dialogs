@@ -25,9 +25,11 @@ func _ready() -> void:
 func init(t: Template) -> void:
 	self.template = t
 	add_values()
+	on_init()
 
 func on_delete_request() -> void:
 	on_close()
+	clear_all_slots()
 	self.queue_free()
 
 func on_resize_request(new_size: Vector2) -> void:
@@ -38,6 +40,12 @@ func on_close() -> void:
 	pass
 
 func on_resize(new_size: Vector2) -> void:
+	pass
+
+func on_save() -> void:
+	pass
+
+func on_init() -> void:
 	pass
 
 func save_and_set_owner(new_owner : Node) -> void:
@@ -54,6 +62,7 @@ func save_node() -> void:
 		match template_value.type:
 			0: # TODO: use enum value
 				data[child.name] = child.get_selected_metadata()
+	on_save()
 
 func add_values() -> void:
 	if values.get_child_count() > 0:
