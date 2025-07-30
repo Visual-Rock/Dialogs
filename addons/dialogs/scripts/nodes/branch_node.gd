@@ -45,7 +45,6 @@ func update_branches(idx: int) -> void:
 			child.queue_free()
 	
 	for i in range(0, branch_box.value):
-		print(i)
 		var val = null
 		if branches.size() > i:
 			val = branches[i]

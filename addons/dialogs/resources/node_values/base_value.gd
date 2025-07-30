@@ -1,7 +1,8 @@
 class_name BaseValue extends Resource
 
 enum NODEVALUETYPE {
-	ENUM = 0
+	ENUM = 0,
+	NUMBER = 1
 }
 
 var name: String
@@ -12,6 +13,8 @@ static func load_from_dict(dict: Dictionary) -> BaseValue:
 	match dict["type"]:
 		"enum":
 			value = EnumValue.new(dict)
+		"number":
+			value = NumberValue.new(dict)
 	
 	value.name = dict["name"]
 	

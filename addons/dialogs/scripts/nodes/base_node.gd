@@ -62,6 +62,8 @@ func save_node() -> void:
 		match template_value.type:
 			0: # TODO: use enum value
 				data[child.name] = child.get_selected_metadata()
+			1:
+				data[child.name] = child.value
 	on_save()
 
 func add_values() -> void:
@@ -69,7 +71,7 @@ func add_values() -> void:
 		return
 	
 	for value in template.values:
-		var val
+		var val = null
 		if data.has(value.name):
 			val = data[value.name]
 		
@@ -95,3 +97,14 @@ func add_values() -> void:
 				btn.select(selected)
 				btn.name = value.name
 				values.add_child(btn)
+			1:
+				var box = SpinBox.new()
+				box.step = value.step
+				box.min_value = value.min
+				box.max_value = value.max
+				box.prefix = value.name + ":"
+				
+				box.value = val if val != null else value.default
+				
+				box.name = value.name
+				values.add_child(box)
