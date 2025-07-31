@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dlldtw528fihk" path="res://addons/dialogs/scripts/nodes/branch_node.gd" id="2_xtxq1"]
 
 [node name="BranchNode" instance=ExtResource("1_lirgj")]
+anchors_preset = -1
 title = "Branch Node"
 slot/1/left_enabled = false
 slot/1/left_type = 0
