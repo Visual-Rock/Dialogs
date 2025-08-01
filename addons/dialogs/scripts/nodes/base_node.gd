@@ -66,6 +66,8 @@ func save_node() -> void:
 				data[child.name] = child.value
 			2:
 				data[child.name] = child.text
+			3:
+				data[child.name] = child.button_pressed
 	on_save() 
 
 func add_values() -> void:
@@ -119,3 +121,9 @@ func add_values() -> void:
 				edit.text = value.default if val == null else val
 				edit.name = value.name
 				values.add_child(edit)
+			3:
+				var checkbox: CheckBox = CheckBox.new()
+				checkbox.name = value.name
+				checkbox.text = value.name
+				checkbox.button_pressed = value.default if val == null else val
+				values.add_child(checkbox)

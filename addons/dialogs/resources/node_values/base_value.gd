@@ -20,6 +20,8 @@ static func load_from_dict(dict: Dictionary) -> BaseValue:
 			value = NumberValue.new(dict)
 		"text":
 			value = TextValue.new(dict)
+		"bool":
+			value = BoolValue.new(dict)
 	
 	value.name = dict["name"]
 	
