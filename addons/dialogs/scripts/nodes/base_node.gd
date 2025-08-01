@@ -64,7 +64,9 @@ func save_node() -> void:
 				data[child.name] = child.get_selected_metadata()
 			1:
 				data[child.name] = child.value
-	on_save()
+			2:
+				data[child.name] = child.text
+	on_save() 
 
 func add_values() -> void:
 	if values.get_child_count() > 0:
@@ -108,3 +110,12 @@ func add_values() -> void:
 				
 				box.name = value.name
 				values.add_child(box)
+			2:
+				var edit: Control = TextEdit.new() if value.multiline else LineEdit.new()
+				if value.multiline:
+					edit.custom_minimum_size.y = 30
+					edit.size_flags_vertical = Control.SIZE_EXPAND_FILL
+				edit.placeholder_text = value.name
+				edit.text = value.default if val == null else val
+				edit.name = value.name
+				values.add_child(edit)

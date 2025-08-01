@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://iv3d3yycdkmr" path="res://addons/dialogs/scripts/nodes/base_node.gd" id="1_p6u0l"]
 
 [node name="BaseNode" type="GraphNode"]
+anchors_preset = -1
 offset_right = 208.0
 offset_bottom = 133.0
 theme_override_constants/separation = 4
@@ -21,4 +22,5 @@ script = ExtResource("1_p6u0l")
 
 [node name="Values" type="VBoxContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 2
