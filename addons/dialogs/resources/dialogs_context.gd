@@ -6,8 +6,8 @@ const DATA_FILE_NAME = "data.json"
 
 const EDITOR := preload("res://addons/dialogs/ui/editor/dialog_editor.tscn")
 
-var dialogs: Array[Dialog] = []
-var templates: Array[Template] = []
+var dialogs: Array[DialogInternal] = []
+var templates: Array[Template]     = []
 
 func save_data() -> void:
 	if !DirAccess.dir_exists_absolute(PATH):
@@ -48,7 +48,7 @@ func load_data() -> void:
 	if data.has("dialogs"):
 		dialogs.clear()
 		for dialog in data["dialogs"]:
-			var d = Dialog.new(dialog["id"], dialog["name"])
+			var d = DialogInternal.new(dialog["id"], dialog["name"])
 			d.description = dialog["description"]
 			d.template = get_template(dialog["template"])
 			dialogs.append(d)
@@ -60,7 +60,7 @@ func get_template(name: String) -> Template:
 	printerr("failed to find template: " + name)
 	return null
 
-func save_bake(data: Dictionary, dailog: Dialog) -> void:
+func save_bake(data: Dictionary, dailog: DialogInternal) -> void:
 	DirAccess.make_dir_recursive_absolute(get_bake_file_name(dailog).get_base_dir())
 	var f := FileAccess.open(get_bake_file_name(dailog), FileAccess.WRITE)
 	
@@ -74,15 +74,15 @@ func save_bake(data: Dictionary, dailog: Dialog) -> void:
 func get_data_file_name() -> String:
 	return PATH + "/" + DATA_FILE_NAME
 
-func get_bake_file_name(dialog: Dialog) -> String:
+func get_bake_file_name(dialog: DialogInternal) -> String:
 	return PATH + "/bakes/" + dialog.name + ".json"
 
-func get_dialog_editor(dialog: Dialog) -> Control:
+func get_dialog_editor(dialog: DialogInternal) -> Control:
 	if FileAccess.file_exists(get_dialog_editor_path(dialog)):
 		return load(get_dialog_editor_path(dialog)).instantiate()
 	return EDITOR.instantiate()
 
-func save_dialog_editor(dialog: Dialog, editor: GraphEdit) -> void:
+func save_dialog_editor(dialog: DialogInternal, editor: GraphEdit) -> void:
 	var data := PackedScene.new()
 	
 	for child in editor.get_children():
@@ -93,7 +93,7 @@ func save_dialog_editor(dialog: Dialog, editor: GraphEdit) -> void:
 	data.pack(editor)
 	ResourceSaver.save(data, get_dialog_editor_path(dialog))
 
-func get_dialog_editor_path(dialog: Dialog) -> String:
+func get_dialog_editor_path(dialog: DialogInternal) -> String:
 	return PATH + "/saves/" + str(dialog.id) + "_" + dialog.name + ".tscn"
 
 func load_templates() -> void:

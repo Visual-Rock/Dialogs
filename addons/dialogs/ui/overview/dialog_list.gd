@@ -13,7 +13,7 @@ var context: DialogsContext
 var description_edit := preload("res://addons/dialogs/ui/overview/dialog_description_edit.tscn")
 var action_buttons := preload("res://addons/dialogs/ui/overview/action_buttons.tscn")
 
-signal open_dialog(dialog: Dialog)
+signal open_dialog(dialog: DialogInternal)
 
 func init(context: DialogsContext) -> void:
 	self.context = context
@@ -48,5 +48,5 @@ func refresh_list() -> void:
 			child.name = str(dialog.id) + "_" + suffix
 			self.add_child(child)
 
-func on_open_dialog(dialog: Dialog) -> void:
+func on_open_dialog(dialog: DialogInternal) -> void:
 	emit_signal("open_dialog", dialog)

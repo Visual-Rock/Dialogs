@@ -15,7 +15,7 @@ var add_texture: Texture2D = EditorInterface.get_editor_theme().get_icon("Add", 
 var save_texture: Texture2D = EditorInterface.get_editor_theme().get_icon("Save", "EditorIcons")
 
 # Signals
-signal dialog_added(dialog: Dialog)
+signal dialog_added(dialog: DialogInternal)
 
 func init(context: DialogsContext) -> void:
 	self.context = context
@@ -35,7 +35,7 @@ func on_add_pressed() -> void:
 	if result == null:
 		return
 	
-	var dialog = Dialog.new(result.dialog_id, result.dialog_name)
+	var dialog = DialogInternal.new(result.dialog_id, result.dialog_name)
 	dialog.template = result.dialog_template
 	context.dialogs.append(dialog)
 	emit_signal("dialog_added", dialog)

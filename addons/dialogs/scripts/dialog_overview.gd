@@ -20,10 +20,10 @@ func _ready() -> void:
 	dialog_list.init(context)
 	dialog_list.connect("open_dialog", on_open_dialog)
 
-func on_dialog_added(dialog: Dialog) -> void:
+func on_dialog_added(dialog: DialogInternal) -> void:
 	dialog_list.refresh_list()
 
-func on_open_dialog(dialog: Dialog) -> void:
+func on_open_dialog(dialog: DialogInternal) -> void:
 	if is_opened(dialog):
 		return
 	var editor = context.get_dialog_editor(dialog)
@@ -31,7 +31,7 @@ func on_open_dialog(dialog: Dialog) -> void:
 	dialog_editors.add_child(editor)
 	editor.init(dialog, context)
 
-func is_opened(dialog: Dialog) -> bool:
+func is_opened(dialog: DialogInternal) -> bool:
 	for child in dialog_editors.get_children():
 		# TODO: use id
 		if child.name == dialog.name:

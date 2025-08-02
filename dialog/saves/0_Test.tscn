@@ -1,0 +1,191 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2gqb6cflyu1u"]
+
+[ext_resource type="Script" uid="uid://c85vryum61fpw" path="res://addons/dialogs/scripts/dialog_editor.gd" id="1_7grlx"]
+[ext_resource type="PackedScene" uid="uid://1tqelp3tqvdw" path="res://addons/dialogs/ui/editor/nodes/start_node.tscn" id="2_sb1xg"]
+[ext_resource type="Script" uid="uid://iv3d3yycdkmr" path="res://addons/dialogs/scripts/nodes/base_node.gd" id="3_dy726"]
+[ext_resource type="PackedScene" uid="uid://b0orbcyh11g65" path="res://addons/dialogs/ui/editor/nodes/text_node.tscn" id="4_fjxwb"]
+[ext_resource type="PackedScene" uid="uid://ci20j60whtv3f" path="res://addons/dialogs/ui/editor/nodes/branch_node.tscn" id="5_kak5g"]
+[ext_resource type="Script" uid="uid://dlldtw528fihk" path="res://addons/dialogs/scripts/nodes/branch_node.gd" id="6_gs2i4"]
+[ext_resource type="PackedScene" uid="uid://1msr7vkqv571" path="res://addons/dialogs/ui/editor/nodes/end_node.tscn" id="7_61ng1"]
+
+[node name="Test" type="GraphEdit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+connections = Array[Dictionary]([{
+"from_node": &"StartNode",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"TextNode",
+"to_port": 0
+}, {
+"from_node": &"TextNode",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"BranchNode",
+"to_port": 0
+}, {
+"from_node": &"BranchNode",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"EndNode",
+"to_port": 0
+}, {
+"from_node": &"BranchNode",
+"from_port": 1,
+"keep_alive": false,
+"to_node": &"TextNode",
+"to_port": 0
+}])
+script = ExtResource("1_7grlx")
+metadata/_tab_index = 1
+
+[node name="TextNode" type="GraphNode" parent="." instance=ExtResource("4_fjxwb")]
+layout_mode = 0
+offset_left = -180.0
+offset_top = -220.0
+offset_right = 28.0
+offset_bottom = -87.0
+mouse_filter = 1
+theme_override_constants/separation = 4
+position_offset = Vector2(-180, -220)
+resizable = true
+title = "Text Node"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("3_dy726")
+title_string = "Text Node"
+node_type = 1
+data = {
+&"name": "Name 2",
+&"text": "the next node is a branching node!"
+}
+
+[node name="BranchNode" type="GraphNode" parent="." instance=ExtResource("5_kak5g")]
+layout_mode = 0
+offset_left = 120.0
+offset_top = -240.0
+offset_right = 328.0
+offset_bottom = 48.0
+mouse_filter = 1
+theme_override_constants/separation = 4
+position_offset = Vector2(120, -240)
+resizable = true
+title = "Branch Node"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = true
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color(1, 1, 1, 1)
+slot/3/left_icon = null
+slot/3/right_enabled = true
+slot/3/right_type = 0
+slot/3/right_color = Color(1, 1, 1, 1)
+slot/3/right_icon = null
+slot/3/draw_stylebox = true
+slot/4/left_enabled = false
+slot/4/left_type = 0
+slot/4/left_color = Color(1, 1, 1, 1)
+slot/4/left_icon = null
+slot/4/right_enabled = true
+slot/4/right_type = 0
+slot/4/right_color = Color(1, 1, 1, 1)
+slot/4/right_icon = null
+slot/4/draw_stylebox = true
+script = ExtResource("6_gs2i4")
+branches = ["end", "go back"]
+title_string = "Branch Node"
+node_type = 2
+data = {
+&"name": "Name 1",
+&"text": "well...branch"
+}
+
+[node name="EndNode" type="GraphNode" parent="." instance=ExtResource("7_61ng1")]
+layout_mode = 0
+offset_left = 480.0
+offset_top = -140.0
+offset_right = 688.0
+offset_bottom = -7.0
+mouse_filter = 1
+theme_override_constants/separation = 4
+position_offset = Vector2(480, -140)
+resizable = true
+title = "End Node"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("3_dy726")
+title_string = "End Node"
+node_type = 3
+data = {
+&"name": "Name 2",
+&"text": "this is the end"
+}
+
+[node name="StartNode" type="GraphNode" parent="." instance=ExtResource("2_sb1xg")]
+layout_mode = 0
+offset_left = -540.0
+offset_top = -240.0
+offset_right = -321.0
+offset_bottom = -81.0
+mouse_filter = 1
+theme_override_constants/separation = 4
+position_offset = Vector2(-540, -240)
+resizable = true
+selected = true
+title = "Start Node"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("3_dy726")
+title_string = "Start Node"
+node_type = 0
+data = {
+&"name": "Name 1",
+&"text": "This is an example dialog"
+}

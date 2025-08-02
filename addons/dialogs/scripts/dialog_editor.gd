@@ -9,7 +9,7 @@ var bake_texture := EditorInterface.get_editor_theme().get_icon("Bake", "EditorI
 var node_menu: MenuButton
 var start_node: GraphNode
 
-var dialog: Dialog
+var dialog: DialogInternal
 var context: DialogsContext
 
 var node_menu_items := [
@@ -92,7 +92,7 @@ func connection_request(from, from_slot, to, to_slot):
 func disconnection_request(from, from_slot, to, to_slot):
 	disconnect_node(from, from_slot, to, to_slot)
 
-func init(dialog: Dialog, context: DialogsContext) -> void:
+func init(dialog: DialogInternal, context: DialogsContext) -> void:
 	self.dialog = dialog
 	self.context = context
 	

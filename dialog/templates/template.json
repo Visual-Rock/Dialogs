@@ -1,0 +1,20 @@
+{
+	"name": "Simple Template",
+	"values": [
+		{
+			"name": "name",
+			"type": "enum",
+			"default": "Name 1",
+			"values": [
+				"Name 1",
+				"Name 2"
+			]
+		},
+		{
+			"name": "text",
+			"type": "text",
+			"default": "",
+			"multiline": true
+		}
+	]
+}

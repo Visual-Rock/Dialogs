@@ -1,7 +1,7 @@
 @tool
 extends LineEdit
 
-var dialog: Dialog
+var dialog: DialogInternal
 
 func _ready() -> void:
 	self.text = dialog.description

@@ -1,4 +1,4 @@
-class_name Dialog extends Resource
+class_name DialogInternal extends Resource
 
 var id: int
 var name: String
