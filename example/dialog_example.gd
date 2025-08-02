@@ -26,10 +26,13 @@ func _ready() -> void:
 		else:
 			currernt_dialog.next()
 	)
+	
+	dialog_selector.item_selected.connect(load_dialog)
 
 func load_dialog(idx: int) -> void:
 	currernt_dialog = manager.load_dialog(manager.dialogs[idx])
 	currernt_dialog.on_current_node_changed.connect(node_changed)
+	currernt_dialog.values["is_checked"] = $MarginContainer/VBoxContainer/HBoxContainer/CheckBox.button_pressed
 	currernt_dialog.start()
 
 func node_changed() -> void:
@@ -52,3 +55,7 @@ func node_changed() -> void:
 	
 	if currernt_dialog.is_end():
 		next_button.text = "Restart"
+
+
+func _on_check_box_toggled(toggled_on: bool) -> void:
+	currernt_dialog.values["is_checked"] = toggled_on

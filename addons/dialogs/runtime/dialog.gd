@@ -25,30 +25,30 @@ func start() -> void:
 
 func next(branch_idx: int = 0) -> void:
 	if is_branch():
-		# selection
-		if current_node["branch_type"] == 0:
-			var branch = current_node["branches"][branch_idx]
-			var next = branch["next"]
-			current_node = nodes[next]
+		var branch = current_node["branches"][branch_idx]
+		var next = branch["next"]
+		current_node = nodes[next]
 	else:
 		var next = current_node["next"]
 		current_node = nodes[next]
 	
-	if is_branch() && current_node["branch_type"] == 1 or 2:
+	if is_branch() && (current_node["branch_type"] == 1 || current_node["branch_type"] == 2):
 		var idx: int = 0
 		
 		# Random
 		if current_node["branch_type"] == 1:
-			idx = randi_range(0, current_node["branches"].size())
+			idx = randi_range(0, current_node["branches"].size() - 1)
 		else:
 			if values.has(current_node["value_name"]):
-				var val = values["value_name"]
+				var val = values[current_node["value_name"]]
+				var i: int = 0
 				for branch in get_branch_values():
 					if branch == str(val):
+						idx = i
 						break
-					idx += 1
+					i += 1
 			else:
-				printerr("no value with name " + values["value_name"] + "found")
+				printerr("no value with name " + current_node["value_name"] + "found")
 		
 		# dont emit node changed signal for the current node
 		return next(idx)

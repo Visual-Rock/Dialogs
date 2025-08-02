@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mt3fu")
+metadata/_edit_vertical_guides_ = [-112.0]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -59,6 +60,10 @@ layout_mode = 2
 [node name="DialogSelector" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Checkbox"
+
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -66,3 +71,5 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Next"
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]

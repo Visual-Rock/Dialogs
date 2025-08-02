@@ -12,7 +12,7 @@
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-scroll_offset = Vector2(-212, -158)
+scroll_offset = Vector2(1132.4666, 151.69424)
 connections = Array[Dictionary]([{
 "from_node": &"StartNode",
 "from_port": 0,
@@ -62,17 +62,17 @@ connections = Array[Dictionary]([{
 "to_node": &"@GraphNode@97719",
 "to_port": 0
 }])
-zoom = 0.46650726
+zoom = 1.3309997
 script = ExtResource("1_mw2ug")
 metadata/_tab_index = 0
 
 [node name="StartNode" type="GraphNode" parent="." instance=ExtResource("2_860kb")]
 layout_mode = 0
-offset_left = 212.0
-offset_top = 158.0
-offset_right = 532.0
-offset_bottom = 358.0
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = -1132.4666
+offset_top = -151.69424
+offset_right = -812.46655
+offset_bottom = 48.305756
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 resizable = true
@@ -96,11 +96,11 @@ data = {
 
 [node name="BranchNode" type="GraphNode" parent="." instance=ExtResource("4_b7c80")]
 layout_mode = 0
-offset_left = 407.93304
-offset_top = 148.66986
-offset_right = 687.9329
-offset_bottom = 488.66977
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = -573.44666
+offset_top = -178.31424
+offset_right = -293.44675
+offset_bottom = 161.68564
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 position_offset = Vector2(420, -20)
@@ -162,11 +162,11 @@ data = {
 
 [node name="TextNode" type="GraphNode" parent="." instance=ExtResource("6_mhnqt")]
 layout_mode = 0
-offset_left = 594.53595
-offset_top = 167.33014
-offset_right = 934.53595
-offset_bottom = 347.3302
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = -41.046753
+offset_top = -125.07425
+offset_right = 298.9532
+offset_bottom = 54.925827
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 position_offset = Vector2(820, 20)
@@ -186,16 +186,16 @@ title_string = "Text Node"
 node_type = 1
 data = {
 &"name": "Name 1",
-&"text": "change the checkbox below to change the next dialog passnode"
+&"text": "change the checkbox below to change the next dialog node"
 }
 
 [node name="@GraphNode@97455" type="GraphNode" parent="." instance=ExtResource("4_b7c80")]
 layout_mode = 0
-offset_left = 809.1293
-offset_top = 158.0
-offset_right = 1017.1293
-offset_bottom = 445.0
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = 571.21313
+offset_top = -151.69424
+offset_right = 779.21313
+offset_bottom = 135.30576
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 position_offset = Vector2(1280, 0)
@@ -247,7 +247,7 @@ slot/4/right_color = Color(1, 1, 1, 1)
 slot/4/right_icon = null
 slot/4/draw_stylebox = true
 script = ExtResource("5_6j8y6")
-branches = ["True", "False"]
+branches = ["true", "false"]
 type = 2
 value = "is_checked"
 title_string = "Branch Node"
@@ -259,11 +259,11 @@ data = {
 
 [node name="EndNode" type="GraphNode" parent="." instance=ExtResource("7_clj6d")]
 layout_mode = 0
-offset_left = 967.74176
-offset_top = 158.0
-offset_right = 1175.7417
-offset_bottom = 291.0
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = 1023.7529
+offset_top = -151.69424
+offset_right = 1231.7529
+offset_bottom = -18.694244
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 position_offset = Vector2(1620, 0)
@@ -288,11 +288,11 @@ data = {
 
 [node name="@GraphNode@97486" type="GraphNode" parent="." instance=ExtResource("7_clj6d")]
 layout_mode = 0
-offset_left = 986.40204
-offset_top = 251.30145
-offset_right = 1194.4021
-offset_bottom = 384.30142
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = 1076.9929
+offset_top = 114.50571
+offset_right = 1284.993
+offset_bottom = 247.50565
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 position_offset = Vector2(1660, 200)
@@ -317,11 +317,11 @@ data = {
 
 [node name="@GraphNode@97528" type="GraphNode" parent="." instance=ExtResource("4_b7c80")]
 layout_mode = 0
-offset_left = 594.53595
-offset_top = 288.622
-offset_right = 802.5361
-offset_bottom = 575.622
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = -41.046753
+offset_top = 220.98569
+offset_right = 166.95331
+offset_bottom = 507.98572
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 position_offset = Vector2(820, 280)
@@ -384,11 +384,11 @@ data = {
 
 [node name="@GraphNode@97704" type="GraphNode" parent="." instance=ExtResource("7_clj6d")]
 layout_mode = 0
-offset_left = 743.8183
-offset_top = 325.94263
-offset_right = 951.8186
-offset_bottom = 458.9427
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = 384.87317
+offset_top = 327.46567
+offset_right = 592.87354
+offset_bottom = 460.4657
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 position_offset = Vector2(1140, 360)
@@ -413,16 +413,15 @@ data = {
 
 [node name="@GraphNode@97719" type="GraphNode" parent="." instance=ExtResource("7_clj6d")]
 layout_mode = 0
-offset_left = 743.8183
-offset_top = 400.58377
-offset_right = 951.8186
-offset_bottom = 533.5839
-scale = Vector2(0.46650726, 0.46650726)
+offset_left = 384.87317
+offset_top = 540.42566
+offset_right = 592.87354
+offset_bottom = 673.42584
+scale = Vector2(1.3309997, 1.3309997)
 mouse_filter = 1
 theme_override_constants/separation = 4
 position_offset = Vector2(1140, 520)
 resizable = true
-selected = true
 title = "End Node"
 slot/0/left_enabled = true
 slot/0/left_type = 0

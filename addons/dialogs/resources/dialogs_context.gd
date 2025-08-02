@@ -62,6 +62,7 @@ func get_template(name: String) -> Template:
 
 func save_bake(data: Dictionary, dailog: DialogInternal) -> void:
 	DirAccess.make_dir_recursive_absolute(get_bake_file_name(dailog).get_base_dir())
+	
 	var f := FileAccess.open(get_bake_file_name(dailog), FileAccess.WRITE)
 	
 	if f == null:
