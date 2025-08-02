@@ -132,6 +132,9 @@ func on_add_node(id: int) -> void:
 	var node = meta["data"].instantiate()
 	self.add_child(node)
 	node.init(dialog.template)
+	
+	if meta["id"] == 0:
+		start_node = node
 
 func on_close_clicked() -> void:
 	on_save_clicked()
@@ -189,7 +192,6 @@ func write_node(node: GraphNode, nodes: Dictionary, mapping: Dictionary) -> void
 	nodes[str(current_id)] = node_data
 
 func get_node_id(node: GraphNode, nodes: Dictionary, mapping: Dictionary) -> int:
-	
 	if mapping.has(node.name):
 		return mapping[node.name]
 	id += 1

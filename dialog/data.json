@@ -1,1 +1,1 @@
-{"dialogs":[{"description":"","id":0,"name":"Test","template":"Simple Template"},{"description":"Example for all three branching nodes","id":1,"name":"Branching_Example","template":"Simple Template"}]}
+{"dialogs":[{"description":"","id":0,"name":"Test","template":"Simple Template"},{"description":"Example for all three branching nodes","id":1,"name":"Branching_Example","template":"Simple Template"},{"description":"Example for how to use variable injection","id":2,"name":"Variable_Injection_Example","template":"Simple Template"}]}
