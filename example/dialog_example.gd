@@ -33,10 +33,11 @@ func load_dialog(idx: int) -> void:
 	currernt_dialog = manager.load_dialog(manager.dialogs[idx])
 	currernt_dialog.on_current_node_changed.connect(node_changed)
 	currernt_dialog.values["is_checked"] = $MarginContainer/VBoxContainer/HBoxContainer/CheckBox.button_pressed
+	currernt_dialog.values["text"] = $MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text
 	currernt_dialog.start()
 
 func node_changed() -> void:
-	var vals = currernt_dialog.get_values()
+	var vals: Dictionary = currernt_dialog.get_values()
 	name_field.text = vals["name"]
 	text_field.text = vals["text"]
 	
@@ -59,3 +60,6 @@ func node_changed() -> void:
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	currernt_dialog.values["is_checked"] = toggled_on
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	currernt_dialog.values["text"] = new_text

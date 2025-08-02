@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx2spafvaph81"]
+
+[ext_resource type="Script" uid="uid://c85vryum61fpw" path="res://addons/dialogs/scripts/dialog_editor.gd" id="1_2grdy"]
+[ext_resource type="PackedScene" uid="uid://1tqelp3tqvdw" path="res://addons/dialogs/ui/editor/nodes/start_node.tscn" id="2_vm8rt"]
+[ext_resource type="Script" uid="uid://iv3d3yycdkmr" path="res://addons/dialogs/scripts/nodes/base_node.gd" id="3_shi1s"]
+[ext_resource type="PackedScene" uid="uid://1msr7vkqv571" path="res://addons/dialogs/ui/editor/nodes/end_node.tscn" id="4_2grdy"]
+
+[node name="Variable_Injection_Example" type="GraphEdit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_offset = Vector2(0, -118)
+connections = Array[Dictionary]([{
+"from_node": &"StartNode",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"EndNode",
+"to_port": 0
+}])
+zoom = 1.1
+script = ExtResource("1_2grdy")
+metadata/_tab_index = 0
+
+[node name="StartNode" type="GraphNode" parent="." instance=ExtResource("2_vm8rt")]
+layout_mode = 0
+offset_top = 118.0
+offset_right = 320.0
+offset_bottom = 278.0
+scale = Vector2(1.1, 1.1)
+mouse_filter = 1
+theme_override_constants/separation = 4
+resizable = true
+title = "Start Node"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("3_shi1s")
+title_string = "Start Node"
+node_type = 0
+data = {
+&"name": "Name 1",
+&"text": "please enter text in the textbox below"
+}
+
+[node name="EndNode" type="GraphNode" parent="." instance=ExtResource("4_2grdy")]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 118.0
+offset_right = 696.0
+offset_bottom = 278.0
+scale = Vector2(1.1, 1.1)
+mouse_filter = 1
+theme_override_constants/separation = 4
+position_offset = Vector2(360, 0)
+resizable = true
+selected = true
+title = "End Node"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("3_shi1s")
+title_string = "End Node"
+node_type = 3
+data = {
+&"name": "Name 2",
+&"text": "You entered:
+<var>text</var>"
+}

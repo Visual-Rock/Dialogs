@@ -7,6 +7,7 @@ var history: Array[String] = []
 
 # values used for branching and variable injection
 var values: Dictionary
+var auto_inject: bool = true
 
 var current_node: Dictionary = {}
 
@@ -67,4 +68,28 @@ func is_end() -> bool:
 	return current_node["type"] == 3
 
 func get_values() -> Dictionary:
+	if auto_inject:
+		var v: Dictionary = current_node["values"];
+		for key: String in v.keys():
+			if v[key] is String:
+				v[key] = inject(v[key])
+		return v
 	return current_node["values"]
+
+func inject(string: String) -> String:
+	# TODO: rework
+	var rtrn: String = string
+	var var_tags: int = string.count("<var>")
+	var tag_start: int
+	var tag_end: int
+	var val_name: String
+	for i in var_tags:
+		tag_start = rtrn.find("<var>")
+		tag_end  = rtrn.find("</var>")
+		val_name = rtrn.substr(tag_start + 5, tag_end - 5 - tag_start)
+		var tag: String = "<var>" + val_name + "</var>"
+		if values.has(val_name):
+			rtrn = rtrn.replace(tag, values[val_name])
+		else:
+			rtrn = rtrn.replace(tag, " ERR_VALUE_NOT_FOUND ")
+	return rtrn

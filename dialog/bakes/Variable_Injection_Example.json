@@ -1,0 +1,1 @@
+{"description":"Example for how to use variable injection","name":"Variable_Injection_Example","nodes":{"1":{"id":"1","next":"2","type":0,"values":{"name":"Name 1","text":"please enter text in the textbox below"}},"2":{"id":"2","type":3,"values":{"name":"Name 2","text":"You entered:\n<var>text</var>"}}}}
